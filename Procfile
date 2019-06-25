@@ -1,0 +1,1 @@
+web: gunicorn dynamicweb.wsgi --log-file -
