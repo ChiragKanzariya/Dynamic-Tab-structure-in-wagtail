@@ -14,10 +14,14 @@ class MainIndexPage(Page):
 
     page_title = models.CharField(max_length=255, blank=False, null=True)
     page_subtitle = RichTextField(features=['bold', 'italic'])
+    subpage_title = models.CharField(max_length=255, blank=False, null=True)
+    subpage_subtitle = RichTextField(features=['bold', 'italic'])
 
     content_panels = Page.content_panels + [
         FieldPanel('page_title'),
         FieldPanel('page_subtitle'),
+        FieldPanel('subpage_title'),
+        FieldPanel('subpage_subtitle'),
     ]
 
     def get_context(self, request):
@@ -26,11 +30,17 @@ class MainIndexPage(Page):
         iospages = IOS.objects.child_of(self).live()
         pythonpages = Python.objects.child_of(self).live()
         nodejspages = NodeJS.objects.child_of(self).live()
+        rubypages = Ruby.objects.child_of(self).live()
+        androidpages = Android.objects.child_of(self).live()
+        reactpages = React.objects.child_of(self).live()
         context = {
             'indexpages': indexpages,
             'iospages': iospages,
             'pythonpages': pythonpages,
             'nodejspages': nodejspages,
+            'rubypages': rubypages,
+            'androidpages': androidpages,
+            'reactpages': reactpages,
         }
         return context
     
@@ -118,3 +128,84 @@ class NodeJS(Page):
     class Meta:
         verbose_name = "NodeJS Page"
         verbose_name_plural = "NodeJS Pages"
+
+
+class Ruby(Page):
+    
+    templates = "templates/tabstructure/ruby_page.html"
+
+    ruby_title = models.CharField(max_length=255, blank=False, null=True)
+    ruby_content_detail = models.CharField(max_length=255, blank=False, null=True)
+    ruby_extra_detail = RichTextField(null=True, blank=True)
+    content = StreamField(
+        [
+        ("raw_content", RawContentBlock())
+        ],
+        null=True, 
+        blank = True
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel('ruby_title'),
+        FieldPanel('ruby_content_detail'),
+        FieldPanel('ruby_extra_detail'),
+        StreamFieldPanel('content'),
+    ]
+
+    class Meta:
+        verbose_name = "Ruby Page"
+        verbose_name_plural = "Ruby Pages"
+
+
+class Android(Page):
+    
+    templates = "templates/tabstructure/android_page.html"
+
+    android_title = models.CharField(max_length=255, blank=False, null=True)
+    android_content_detail = models.CharField(max_length=255, blank=False, null=True)
+    android_extra_detail = RichTextField(null=True, blank=True)
+    content = StreamField(
+        [
+        ("raw_content", RawContentBlock())
+        ],
+        null=True, 
+        blank = True
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel('android_title'),
+        FieldPanel('android_content_detail'),
+        FieldPanel('android_extra_detail'),
+        StreamFieldPanel('content'),
+    ]
+
+    class Meta:
+        verbose_name = "Android Page"
+        verbose_name_plural = "Android Pages"
+    
+
+class React(Page):
+    
+    templates = "templates/tabstructure/react_page.html"
+
+    react_title = models.CharField(max_length=255, blank=False, null=True)
+    react_content_detail = models.CharField(max_length=255, blank=False, null=True)
+    react_extra_detail = RichTextField(null=True, blank=True)
+    content = StreamField(
+        [
+        ("raw_content", RawContentBlock())
+        ],
+        null=True, 
+        blank = True
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel('react_title'),
+        FieldPanel('react_content_detail'),
+        FieldPanel('react_extra_detail'),
+        StreamFieldPanel('content'),
+    ]
+
+    class Meta:
+        verbose_name = "React Page"
+        verbose_name_plural = "React Pages"

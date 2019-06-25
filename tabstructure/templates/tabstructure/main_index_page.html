@@ -8,7 +8,7 @@
         <div class="lead">{{ indexpages.page.page_subtitle|richtext }}</div>
     </div>
     <div class="container">
-        <h1 class="jumbotron">Click for each language syntax and its details</h1>
+        <h1 class="jumbotron">Click for each language syntax and its details. If you want to change than do on admin side dynamically.</h1>
         {% for ios in iospages %}
         {% for python in pythonpages %}
         {% for nodejs in nodejspages %}
@@ -40,6 +40,48 @@
                 <p>{{ nodejs.nodejs_content_detail }}</p>
                 <h2>NodeJS detail</h2>
                 <p>{{ nodejs.nodejs_extra_detail|richtext }}</p>
+            </div>
+        {% endfor %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+    <div class="jumbotron">
+            <h1 class="display-4">{{ indexpages.page.subpage_title }}<h1>
+            <div class="lead">{{ indexpages.page.subpage_subtitle|richtext }}</div>
+    </div>
+    <div class="container">
+        <h1 class="jumbotron">Click for each language syntax and its details. If you want to change than do on admin side dynamically.</h1>
+        {% for ruby in rubypages %}
+        {% for android in androidpages %}
+        {% for react in reactpages %}
+            <div class="nav">
+                <button class="btn btn-primary" onclick="showSubContent('ruby')"><h2>{{ ruby.ruby_title }}</h2></button>
+                <button class="btn btn-primary ml-4" onclick="showSubContent('android')"><h2>{{ android.android_title }}</h2></button>
+                <button class="btn btn-primary ml-4" onclick="showSubContent('react')"><h2>{{ react.react_title }}</h2></button>
+            </div>
+            <div class="mt-5" id="ruby">
+                <h2>Ruby Syntax</h2>
+                <p>{{ ruby.content }}</p>
+                <h2>What is Ruby?</h2>
+                <p>{{ ruby.ruby_content_detail }}</p>
+                <h2>Ruby detail</h2>
+                <p>{{ ruby.ruby_extra_detail|richtext }}</p>
+            </div>
+            <div class="mt-5" id="android" hidden>
+                <h2>Android Syntax</h2>
+                <p>{{ android.content }}</p>
+                <h2>What is Android?</h2>
+                <p>{{ android.android_content_detail }}</p>
+                <h2>Android detail</h2>
+                <p>{{ android.android_extra_detail|richtext }}</p>
+            </div>
+            <div class="mt-5" id="react" hidden>
+                <h2>React Syntax</h2>
+                <p>{{ react.content }}</p>
+                <h2>What is React?</h2>
+                <p>{{ react.react_content_detail }}</p>
+                <h2>React detail</h2>
+                <p>{{ react.react_extra_detail|richtext }}</p>
             </div>
         {% endfor %}
         {% endfor %}

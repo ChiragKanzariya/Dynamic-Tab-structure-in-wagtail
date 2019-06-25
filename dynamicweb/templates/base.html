@@ -58,6 +58,24 @@
             
         }
     </script>
+    <script>
+            function showSubContent(str){
+                if(str === 'ruby'){
+                    document.getElementById(str).hidden=false;
+                    document.getElementById('android').hidden=true;
+                    document.getElementById('react').hidden=true;
+                } else if (str === 'android') {
+                    document.getElementById(str).hidden=false;
+                    document.getElementById('ruby').hidden=true;
+                    document.getElementById('react').hidden=true;
+                } else if(str === 'react') {
+                    document.getElementById(str).hidden=false;
+                    document.getElementById('ruby').hidden=true;
+                    document.getElementById('android').hidden=true;
+                }
+                
+            }
+        </script>
     {% endblock %}
 </body>
 
