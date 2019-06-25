@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">{{ indexpages.page.page_title }}<h1>
+        <div class="lead">{{ indexpages.page.page_subtitle|richtext }}</div>
+    </div>
+    <div class="container">
+        <h1 class="jumbotron">Click for each language syntax and its details</h1>
+        {% for ios in iospages %}
+        {% for python in pythonpages %}
+        {% for nodejs in nodejspages %}
+            <div class="nav">
+                <button class="btn btn-primary" onclick="showContent('ios')"><h2>{{ ios.ios_title }}</h2></button>
+                <button class="btn btn-primary ml-4" onclick="showContent('python')"><h2>{{ python.python_title }}</h2></button>
+                <button class="btn btn-primary ml-4" onclick="showContent('nodejs')"><h2>{{ nodejs.nodejs_title }}</h2></button>
+            </div>
+            <div class="mt-5" id="ios">
+                <h2>IOS Syntax</h2>
+                <p>{{ ios.content }}</p>
+                <h2>What is IOS?</h2>
+                <p>{{ ios.ios_content_detail }}</p>
+                <h2>IOS detail</h2>
+                <p>{{ ios.ios_extra_detail|richtext }}</p>
+            </div>
+            <div class="mt-5" id="python" hidden>
+                <h2>Python Syntax</h2>
+                <p>{{ python.content }}</p>
+                <h2>What is Python?</h2>
+                <p>{{ python.python_content_detail }}</p>
+                <h2>Python detail</h2>
+                <p>{{ python.python_extra_detail|richtext }}</p>
+            </div>
+            <div class="mt-5" id="nodejs" hidden>
+                <h2>NodeJS Syntax</h2>
+                <p>{{ nodejs.content }}</p>
+                <h2>What is NodeJS?</h2>
+                <p>{{ nodejs.nodejs_content_detail }}</p>
+                <h2>NodeJS detail</h2>
+                <p>{{ nodejs.nodejs_extra_detail|richtext }}</p>
+            </div>
+        {% endfor %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock content %}

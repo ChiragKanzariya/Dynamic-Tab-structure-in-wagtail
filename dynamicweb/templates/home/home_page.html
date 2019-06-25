@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">{{ self.banner_title }}<h1>
+        <div class="lead">{{ self.banner_subtitle|richtext }}</div>
+    </div>
+
+    {% for main in blogpages %}
+        {% with main=main.specific %}
+        <h2>
+        <a href="{% pageurl main %}">{{ main.pagetitle }}</a>
+        </h2>
+        {% endwith %}
+        <p>{{ main.pagesubtitle|richtext }}</p>  
+    {% endfor %}
+{% endblock content %}
