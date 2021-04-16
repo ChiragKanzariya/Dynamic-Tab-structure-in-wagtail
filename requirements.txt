@@ -31,7 +31,7 @@ django-bootstrap-datepicker-widget==0.1
 django-bootstrap4==0.0.8
 django-crispy-forms==1.7.2
 django-datetimepicker==3.14
-django-debug-toolbar==1.11
+django-debug-toolbar==1.11.1
 django-ipware==2.1.0
 django-jsonfield==1.1.0
 django-modelcluster==4.4
